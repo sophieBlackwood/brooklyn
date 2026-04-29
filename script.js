@@ -1,13 +1,12 @@
-const letters = document.querySelectorAll('.name span');
+// Smooth scroll feel when page loads
+window.addEventListener("load", () => {
+  document.body.style.opacity = "1";
+});
 
-letters.forEach((letter, index) => {
-  letter.style.animationDelay = `${index * 0.05}s`;
-
-  letter.addEventListener('mouseenter', () => {
-    letter.style.color = '#d4af37';
-  });
-
-  letter.addEventListener('mouseleave', () => {
-    letter.style.color = '';
+// Optional: logo scroll to top
+document.querySelector(".logo").addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
 });
