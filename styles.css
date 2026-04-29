@@ -1,13 +1,10 @@
 :root {
+  --bg-dark: #05070d;
   --blue-deep: #0f172a;
-  --blue-soft: #1e3a8a;
+  --blue-glow: #1e3a8a;
   --gold: #d4af37;
-  --gold-soft: #f5e6a6;
-
-  --bg: #f9fbff;
-  --text: #0f172a;
-  --muted: #6b7280;
-  --border: #e5e7eb;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
 }
 
 /* RESET */
@@ -17,98 +14,109 @@
   box-sizing: border-box;
 }
 
-/* BODY */
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
+  background: var(--bg-dark);
   color: var(--text);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
-/* CONTAINER */
-.container {
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
   width: 100%;
-  max-width: 900px;
-  padding: 2rem;
+  padding: 1rem 2rem;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--gold);
 }
 
 /* HERO */
 .hero {
-  margin-bottom: 3rem;
-}
-
-/* NAME EFFECT */
-.name {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  position: relative;
+  height: 100vh;
+  background: url('hero.jpg') center/cover no-repeat;
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
-.name span {
-  transition: all 0.3s ease;
-  cursor: default;
+/* DARK OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5,7,13,0.9),
+    rgba(5,7,13,0.3),
+    rgba(5,7,13,0.1)
+  );
 }
 
-/* FUN INTERACTION */
-.name span:hover {
-  color: var(--gold);
-  transform: translateY(-6px);
+/* NAME */
+.name {
+  position: relative;
+  padding: 2rem;
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: -0.04em;
+  display: flex;
+  gap: 0.2rem;
 }
 
-/* SUBTITLE */
-.subtitle {
-  margin-top: 0.6rem;
-  color: var(--muted);
-  font-size: 1rem;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-}
-
-/* CARD */
-.card {
+.name a {
   text-decoration: none;
-  color: inherit;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.5rem;
-  transition: all 0.25s ease;
-  background: white;
+  color: var(--text);
+  transition: all 0.3s ease;
 }
 
-.card:hover {
-  border-color: var(--blue-soft);
-  transform: translateY(-4px);
+/* HOVER EFFECT */
+.name a:hover {
+  color: var(--gold);
+  transform: translateY(-8px);
 }
 
-/* CARD TEXT */
-.card-title {
-  font-size: 1.1rem;
-  font-weight: 500;
+/* SCROLL SECTION */
+.about {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
 }
 
-.card-desc {
-  margin-top: 0.4rem;
-  font-size: 0.9rem;
+.about-content {
+  max-width: 600px;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.about p {
   color: var(--muted);
+  line-height: 1.7;
 }
 
 /* MOBILE */
-@media (max-width: 500px) {
-  .container {
-    padding: 1.5rem;
+@media (max-width: 600px) {
+  .name {
+    font-size: 3rem;
+    flex-wrap: wrap;
   }
 
-  .card {
-    padding: 1.2rem;
+  .hero {
+    align-items: flex-end;
   }
 }
