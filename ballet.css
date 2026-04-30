@@ -1,0 +1,70 @@
+:root {
+  --ballet-pink: #fce4ec;
+  --ballet-cream: #fffaf0;
+  --ballet-rose: #d81b60;
+  --text-dark: #4a4a4a;
+  --overlay-light: rgba(255, 250, 240, 0.6);
+}
+
+body {
+  background: var(--ballet-cream);
+  color: var(--text-dark);
+}
+
+/* Override the dark overlay for a light, airy feel */
+.overlay {
+  background: linear-gradient(
+    to top,
+    var(--ballet-cream),
+    var(--overlay-light),
+    transparent
+  );
+}
+
+.name span {
+  color: var(--ballet-rose);
+  font-weight: 300;
+  text-transform: lowercase;
+}
+
+/* TIMELINE STYLING */
+.timeline-section {
+  padding: 5rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  color: var(--ballet-rose);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-left: 2px solid var(--ballet-pink);
+  padding-left: 2rem;
+}
+
+.show-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.show-card:hover {
+  transform: translateX(10px);
+  border-left: 5px solid var(--ballet-rose);
+}
+
+.show-card h3 {
+  font-weight: 500;
+  color: var(--text-dark);
+}
