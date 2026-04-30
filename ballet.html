@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Brooklyn | Ballet</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="ballet.css"> </head>
+  <link rel="stylesheet" href="ballet.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
 <body>
 
   <nav class="navbar">
@@ -14,7 +16,7 @@
 
   <section class="hero">
     <video autoplay muted loop playsinline class="bg-video">
-      <source src="assets/ballet-vibe.mp4" type="video/mp4">
+      <source src="assets/ballet-compilation.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
 
@@ -26,29 +28,71 @@
   <section class="timeline-section">
     <h2 class="section-title">Performance History</h2>
     <div class="timeline">
-      <div class="show-card">
-        <span class="year">2024</span>
+      <div class="show-card" data-title="The Greatest Showman" data-desc="A theatrical finale featuring contemporary ballet techniques." data-photos="assets/showman1.jpg">
+        <span class="year">Current</span>
         <h3>The Greatest Showman</h3>
-        <p>Lead Role • Detail-oriented performance</p>
-      </div>
-      
-      <div class="show-card">
-        <span class="year">2023</span>
-        <h3>12 Days of Christmas</h3>
-        <p>Ensemble • Holiday Showcase</p>
       </div>
 
-      <div class="show-card"><h3>Matilda</h3></div>
-      <div class="show-card"><h3>12 Days of Christmas</h3></div>
-      <div class="show-card"><h3>Sleeping Beauty</h3></div>
-      <div class="show-card"><h3>Hansel and Gretel</h3></div>
-      <div class="show-card"><h3>The Magic Toyshop</h3></div>
-      <div class="show-card"><h3>The Nutcracker</h3></div>
-      <div class="show-card"><h3>Snow Queen</h3></div>
-      <div class="show-card"><h3>The Nutcracker</h3></div>
-      <div class="show-card"><h3>Swan Lake</h3></div>
+      <div class="show-card" data-title="12 Days of Christmas" data-desc="Annual holiday showcase." data-photos="">
+        <span class="year">2023</span>
+        <h3>12 Days of Christmas</h3>
+      </div>
+
+      <div class="show-card" data-title="Matilda" data-desc="Character-driven performance." data-photos="">
+        <span class="year">2023</span>
+        <h3>Matilda</h3>
+      </div>
+
+      <div class="show-card" data-title="12 Days of Christmas" data-desc="Holiday ensemble." data-photos="">
+        <span class="year">2022</span>
+        <h3>12 Days of Christmas</h3>
+      </div>
+
+      <div class="show-card" data-title="Sleeping Beauty" data-desc="Classical repertoire performance." data-photos="">
+        <span class="year">2021</span>
+        <h3>Sleeping Beauty</h3>
+      </div>
+
+      <div class="show-card" data-title="Hansel and Gretel" data-desc="Storybook ballet adaptation." data-photos="">
+        <span class="year">2020</span>
+        <h3>Hansel and Gretel</h3>
+      </div>
+
+      <div class="show-card" data-title="The Magic Toyshop" data-desc="Whimsical and technical performance." data-photos="">
+        <span class="year">2019</span>
+        <h3>The Magic Toyshop</h3>
+      </div>
+
+      <div class="show-card" data-title="The Nutcracker" data-desc="The Land of Sweets." data-photos="">
+        <span class="year">2018</span>
+        <h3>The Nutcracker</h3>
+      </div>
+
+      <div class="show-card" data-title="Snow Queen" data-desc="Winter production." data-photos="">
+        <span class="year">2017</span>
+        <h3>Snow Queen</h3>
+      </div>
+
+      <div class="show-card" data-title="The Nutcracker" data-desc="Early company debut." data-photos="">
+        <span class="year">2016</span>
+        <h3>The Nutcracker</h3>
+      </div>
+
+      <div class="show-card" data-title="Swan Lake" data-desc="My first major classical production." data-photos="">
+        <span class="year">2015</span>
+        <h3>Swan Lake</h3>
+      </div>
     </div>
   </section>
+
+  <div id="showModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <div id="modalGallery" class="modal-gallery"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
