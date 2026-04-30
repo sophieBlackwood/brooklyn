@@ -1,47 +1,39 @@
-// Fade in page on load
+// Fade in logic
 window.addEventListener("load", () => {
   document.body.style.opacity = "1";
 });
 
-// Scroll to top logic
-document.querySelector(".logo").addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
+// Modal Logic for Ballet Page
+const modal = document.getElementById("showModal");
+const closeBtn = document.querySelector(".close-button");
 
-/* --- VIBE SWITCHER --- */
+document.querySelectorAll(".show-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const title = card.getAttribute("data-title");
+    const desc = card.getAttribute("data-desc");
+    const photos = card.getAttribute("data-photos") ? card.getAttribute("data-photos").split(',') : [];
 
-const videoSource = document.querySelector(".bg-video source");
-const videoPlayer = document.querySelector(".bg-video");
-
-// Map each letter's link to a specific video file
-// Note: Ensure these files exist in your GitHub repo!
-const vibes = {
-  "ballet.html": "assets/ballet-vibe.mp4",
-  "photography.html": "assets/camera-vibe.mp4",
-  "trips.html": "assets/travel-vibe.mp4",
-  "default": "assets/main-vibe.mp4"
-};
-
-document.querySelectorAll(".name a").forEach(link => {
-  link.addEventListener("mouseenter", (e) => {
-    const fileName = e.target.getAttribute("href");
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalDescription").innerText = desc;
     
-    if (vibes[fileName]) {
-      // Change video source
-      videoSource.src = vibes[fileName];
-      // Reload and play the new video
-      videoPlayer.load();
-      videoPlayer.play();
-    }
-  });
+    const gallery = document.getElementById("modalGallery");
+    gallery.innerHTML = ""; 
+    photos.forEach(src => {
+      if(src) {
+        const img = document.createElement("img");
+        img.src = src;
+        gallery.appendChild(img);
+      }
+    });
 
-  // Optional: Reset to main video when mouse leaves
-  link.addEventListener("mouseleave", () => {
-    videoSource.src = vibes["default"];
-    videoPlayer.load();
-    videoPlayer.play();
+    modal.style.display = "flex";
   });
 });
+
+if (closeBtn) {
+  closeBtn.onclick = () => modal.style.display = "none";
+}
+
+window.onclick = (event) => {
+  if (event.target == modal) modal.style.display = "none";
+};
