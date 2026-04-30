@@ -18,6 +18,9 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--bg-dark);
   color: var(--text);
+  /* Added for your JS fade-in effect */
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 /* NAVBAR */
@@ -45,9 +48,25 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('hero.jpg') center/cover no-repeat;
+  width: 100%;
   display: flex;
   align-items: flex-end;
+  overflow: hidden; /* Keeps video from spilling out */
+  background: var(--bg-dark);
+}
+
+/* VIDEO BACKGROUND */
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
 }
 
 /* DARK OVERLAY */
@@ -56,10 +75,11 @@ body {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(5,7,13,0.9),
-    rgba(5,7,13,0.3),
+    rgba(5,7,13,0.95),
+    rgba(5,7,13,0.4),
     rgba(5,7,13,0.1)
   );
+  z-index: 1; /* Sits above video */
 }
 
 /* NAME */
@@ -70,12 +90,14 @@ body {
   letter-spacing: -0.04em;
   display: flex;
   gap: 0.2rem;
+  z-index: 2; /* Sits above overlay */
 }
 
 .name a {
   text-decoration: none;
   color: var(--text);
   transition: all 0.3s ease;
+  display: inline-block;
 }
 
 /* HOVER EFFECT */
@@ -91,6 +113,9 @@ body {
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
+  position: relative;
+  z-index: 2;
+  background: var(--bg-dark);
 }
 
 .about-content {
@@ -114,9 +139,5 @@ body {
   .name {
     font-size: 3rem;
     flex-wrap: wrap;
-  }
-
-  .hero {
-    align-items: flex-end;
   }
 }
