@@ -2,22 +2,27 @@
   --ballet-pink: #fce4ec;
   --ballet-cream: #fffaf0;
   --ballet-rose: #d81b60;
-  --text-dark: #4a4a4a;
-  --overlay-light: rgba(255, 250, 240, 0.6);
+  --text-dark: #333333;
+  --overlay-light: rgba(255, 250, 240, 0.7);
 }
 
 body {
-  background: var(--ballet-cream);
+  background-color: var(--ballet-cream);
   color: var(--text-dark);
+  opacity: 1; /* Override the fade-in for this page */
 }
 
-/* Override the dark overlay for a light, airy feel */
+/* Hero & Video Adjustments */
+.hero {
+  background: var(--ballet-pink);
+}
+
 .overlay {
   background: linear-gradient(
     to top,
-    var(--ballet-cream),
-    var(--overlay-light),
-    transparent
+    var(--ballet-cream) 0%,
+    var(--overlay-light) 50%,
+    transparent 100%
   );
 }
 
@@ -27,44 +32,94 @@ body {
   text-transform: lowercase;
 }
 
-/* TIMELINE STYLING */
+/* Timeline */
 .timeline-section {
-  padding: 5rem 2rem;
-  max-width: 900px;
+  padding: 80px 20px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .section-title {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 3rem;
-  letter-spacing: 0.1em;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 50px;
   color: var(--ballet-rose);
 }
 
 .timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  border-left: 2px solid var(--ballet-pink);
-  padding-left: 2rem;
+  border-left: 1px solid var(--ballet-pink);
+  padding-left: 30px;
+  margin-left: 20px;
 }
 
 .show-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 25px;
   cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.show-card::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 25px;
+  width: 10px;
+  height: 10px;
+  background: var(--ballet-rose);
+  border-radius: 50%;
 }
 
 .show-card:hover {
-  transform: translateX(10px);
-  border-left: 5px solid var(--ballet-rose);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(216, 27, 96, 0.1);
 }
 
-.show-card h3 {
-  font-weight: 500;
-  color: var(--text-dark);
+.year {
+  font-size: 0.8rem;
+  color: var(--ballet-rose);
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 7, 13, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--ballet-cream);
+  width: 90%;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: 20px;
+  position: relative;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--ballet-rose);
+}
+
+.modal-gallery img {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
 }
